@@ -11,13 +11,13 @@ string1=$1
 string2=$2
 directory=$3
 
-# Verifica che la directory esista e sia una directory
+# Verifica che la directory esista e sia effettivamente una directory
 if [ ! -d "$directory" ]; then
   echo "Directory not found: $directory"
   exit 1
 fi
 
-# Sostituisce ogni occorrenza di string1 con string2 per ogni file nella directory e nei suoi sottodirectory
+# Sostituisce ogni occorrenza di string1 con string2 per ogni file nella directory e nelle sue sottodirectory
 find "$directory" -type f -exec sed -i -r "s/\Q$string1\E/$string2/g" {} +
 
 # Mostra un messaggio di conferma
